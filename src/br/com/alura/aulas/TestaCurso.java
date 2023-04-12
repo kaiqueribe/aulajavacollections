@@ -26,6 +26,8 @@ public class TestaCurso {
 		
 		System.out.println(javaColecoes.getAulas());
 		
+		
+		
 
 		// System.out.println(aulas == javaColecoes.getAulas());
 	}
