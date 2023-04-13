@@ -5,8 +5,11 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.plaf.BorderUIResource.TitledBorderUIResource;
+
 public class Curso {
 
+	
 	private String nome;
 	private String instrutor;
 	private List<Aula> aulas = new LinkedList<>();
@@ -34,12 +37,11 @@ public class Curso {
 	}
 
 	public int getTempoTotal() {
-		int tempoTotal = 0;
-		
-		for (Aula aula : aulas) {
-			tempoTotal += aula.getTempo();
-		}
-		return tempoTotal;
+		return this.aulas.stream().mapToInt(Aula::getTempo).sum();
 	}
-
+	
+	@Override
+	public String toString() {
+		
+		return "[Curso: " + this.nome + ", tempo total: "+ this.getTempoTotal()+", aulas: "+ this.aulas + "]";	}
 }
