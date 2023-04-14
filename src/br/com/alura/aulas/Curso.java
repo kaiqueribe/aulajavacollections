@@ -2,8 +2,10 @@ package br.com.alura.aulas;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.plaf.BorderUIResource.TitledBorderUIResource;
 
@@ -13,11 +15,16 @@ public class Curso {
 	private String nome;
 	private String instrutor;
 	private List<Aula> aulas = new LinkedList<>();
+	private Set<Aluno> alunos = new HashSet<>();
 
 	public Curso(String nome, String instrutor) {
 		super();
 		this.nome = nome;
 		this.instrutor = instrutor;
+	}
+
+	public Set<Aluno> getAlunos() {
+		return Collections.unmodifiableSet(alunos);
 	}
 
 	public String getNome() {
@@ -44,4 +51,14 @@ public class Curso {
 	public String toString() {
 		
 		return "[Curso: " + this.nome + ", tempo total: "+ this.getTempoTotal()+", aulas: "+ this.aulas + "]";	}
+
+	public void matricula(Aluno aluno) {
+		this.alunos.add(aluno);
+		
+	}
+
+	public boolean estaMatriculado(Aluno aluno) {
+		return this.alunos.contains(aluno);
+		
+	}
 }
