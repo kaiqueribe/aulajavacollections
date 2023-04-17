@@ -1,26 +1,23 @@
 package br.com.alura.aulas;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import javax.swing.plaf.BorderUIResource.TitledBorderUIResource;
-
 public class Curso {
 
-	
 	private String nome;
 	private String instrutor;
 	private List<Aula> aulas = new LinkedList<>();
-	private Set<Aluno> alunos = new HashSet<>();
+	private Set<Aluno> alunos = new LinkedHashSet<>();
+	private double valorCurso;
 
-	public Curso(String nome, String instrutor) {
-		super();
+	public Curso(String nome, String instrutor, double valorCurso) {
 		this.nome = nome;
 		this.instrutor = instrutor;
+		this.valorCurso = valorCurso;
 	}
 
 	public Set<Aluno> getAlunos() {
@@ -39,26 +36,35 @@ public class Curso {
 		return Collections.unmodifiableList(aulas);
 	}
 
+	public int getTempoTotal() {
+		return this.aulas.stream().mapToInt(Aula::getTempo).sum();
+	}
+
+	public double getValorCurso() {
+		return valorCurso;
+	}
+
 	public void adiciona(Aula aula) {
 		this.aulas.add(aula);
 	}
 
-	public int getTempoTotal() {
-		return this.aulas.stream().mapToInt(Aula::getTempo).sum();
-	}
-	
 	@Override
 	public String toString() {
-		
-		return "[Curso: " + this.nome + ", tempo total: "+ this.getTempoTotal()+", aulas: "+ this.aulas + "]";	}
+
+		return "[Curso: " + this.nome + ", tempo total: " + this.getTempoTotal() + ", aulas: " + this.aulas + "]";
+	}
 
 	public void matricula(Aluno aluno) {
+		if (this.alunos.contains(aluno)) {
+			System.out.println("Esse aluno ja esta matriculado" + " Nome Aluno: " + aluno.getNomeAluno()
+					+ " Matricula: " + aluno.getNumeroMatricula());
+		}
 		this.alunos.add(aluno);
-		
+
 	}
 
 	public boolean estaMatriculado(Aluno aluno) {
 		return this.alunos.contains(aluno);
-		
+
 	}
 }

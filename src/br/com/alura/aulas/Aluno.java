@@ -1,6 +1,6 @@
 package br.com.alura.aulas;
 
-public class Aluno {
+public class Aluno  {
 
 	private String nomeAluno;
 	private int numeroMatricula;
@@ -21,7 +21,6 @@ public class Aluno {
 		return numeroMatricula;
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
 
@@ -29,10 +28,10 @@ public class Aluno {
 
 		return this.nomeAluno.equals(outro.nomeAluno);
 	}
-	
+
 	@Override
 	public int hashCode() {
-		
+
 		return this.nomeAluno.hashCode();
 	}
 

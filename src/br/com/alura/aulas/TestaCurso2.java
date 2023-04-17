@@ -11,7 +11,7 @@ public class TestaCurso2 {
 
 	public static void main(String[] args) {
 
-		Curso javaColecoes = new Curso("Dominando as coleções Java", "Paulo Silveira");
+		Curso javaColecoes = new Curso("Dominando as coleções Java", "Paulo Silveira",350.32);
 
 
 		javaColecoes.adiciona(new Aula("Trabalhando com ArrayList", 21));

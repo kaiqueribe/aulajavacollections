@@ -8,7 +8,7 @@ public class TestaCurso {
 
 	public static void main(String[] args) {
 
-		Curso javaColecoes = new Curso("Dominando as coleções Java", "Paulo Silveira");
+		Curso javaColecoes = new Curso("Dominando as coleções Java", "Paulo Silveira",350.32);
 
 //		List<Aula> aulas = javaColecoes.getAulas();
 //		System.out.println("Antes de adicionar aula: "+aulas);
