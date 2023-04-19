@@ -1,9 +1,13 @@
 package br.com.alura.aulas;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class Curso {
@@ -12,6 +16,7 @@ public class Curso {
 	private String instrutor;
 	private List<Aula> aulas = new LinkedList<>();
 	private Set<Aluno> alunos = new LinkedHashSet<>();
+	private Map<Integer, Aluno> matriculaParaAluno = new HashMap<>();
 	private double valorCurso;
 
 	public Curso(String nome, String instrutor, double valorCurso) {
@@ -60,11 +65,20 @@ public class Curso {
 					+ " Matricula: " + aluno.getNumeroMatricula());
 		}
 		this.alunos.add(aluno);
+		this.matriculaParaAluno.put(aluno.getNumeroMatricula(), aluno);
 
 	}
 
 	public boolean estaMatriculado(Aluno aluno) {
 		return this.alunos.contains(aluno);
 
+	}
+
+	public Aluno buscaMatriculado(int numero) {
+		for (Aluno aluno : alunos) {
+			if (aluno.getNumeroMatricula() == numero)
+				return aluno;
+		}
+		throw new NoSuchElementException("Matricula não encontrada" + numero);
 	}
 }

@@ -38,7 +38,7 @@ public class Aluno  {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Matricula:" + this.numeroMatricula + " Nome Aluno: " + this.nomeAluno;
+		return "Matricula:" + this.numeroMatricula + " | Nome Aluno: " + this.nomeAluno;
 	}
 
 }
