@@ -75,10 +75,8 @@ public class Curso {
 	}
 
 	public Aluno buscaMatriculado(int numero) {
-		for (Aluno aluno : alunos) {
-			if (aluno.getNumeroMatricula() == numero)
-				return aluno;
-		}
-		throw new NoSuchElementException("Matricula não encontrada" + numero);
+		if(!matriculaParaAluno.containsKey(numero))
+			throw new NoSuchElementException("Matricula não encontrada");
+		return matriculaParaAluno.get(numero);
 	}
 }
